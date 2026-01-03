@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { api } from '../services/api';
 import { getUserId } from '../utils/userId';
 import { formatRelativeTime } from '../utils/dateFormat';
@@ -18,6 +18,14 @@ function Comment({ comment, contextId, contextType, onCommentCreated, onCommentD
   const userId = getUserId();
   const isCommentCreator = comment.user_id && comment.user_id === userId;
   const maxDepth = 5; // Limit nesting depth
+
+  // Sync local state with prop changes (from SSE updates)
+  useEffect(() => {
+    setVoteCount(comment.vote_count || 0);
+    if (comment.voters) {
+      setHasVoted(comment.voters.includes(getUserId()));
+    }
+  }, [comment.vote_count, comment.voters]);
 
   const handleUpvote = async () => {
     if (isVoting) return;
