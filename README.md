@@ -186,6 +186,21 @@ SSE endpoint for real-time updates.
 - `discussion_comments` - Comments table with threading support
 - `discussion_comment_votes` - Votes table (thumbs-up only)
 
+## Background Scripts
+
+The project includes three management scripts:
+
+- **`start-background.sh`** - Start both servers in background
+  - `./start-background.sh` - Development mode (default)
+  - `./start-background.sh --prod` - Production mode
+  - `./start-background.sh --prod --vite-proxy` - Production with Vite proxy
+
+- **`status-background.sh`** - Check server status, ports, and mode
+
+- **`stop-background.sh`** - Stop all running servers
+
+All scripts support both development and production modes, with automatic port detection and process management.
+
 ## Project Structure
 
 ```
