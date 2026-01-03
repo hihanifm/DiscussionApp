@@ -36,7 +36,37 @@ function DiscussionSection({ contextId, contextType = 'campaign' }) {
           console.log('SSE connected for context:', contextId);
           break;
         case 'comment_created':
-          loadComments();
+          // Add new comment to state without reloading all comments
+          setComments(prevComments => {
+            const newComment = {
+              ...data.comment,
+              replies: [],
+              voters: []
+            };
+            
+            // If it's a reply, add it to the parent's replies
+            if (newComment.parent_id) {
+              const addReplyToParent = (comment) => {
+                if (comment.id === newComment.parent_id) {
+                  return {
+                    ...comment,
+                    replies: [...(comment.replies || []), newComment]
+                  };
+                }
+                if (comment.replies) {
+                  return {
+                    ...comment,
+                    replies: comment.replies.map(addReplyToParent)
+                  };
+                }
+                return comment;
+              };
+              return prevComments.map(addReplyToParent);
+            }
+            
+            // If it's a top-level comment, add it to the beginning
+            return [newComment, ...prevComments];
+          });
           break;
         case 'comment_vote_updated':
           setComments(prevComments => {
@@ -56,7 +86,22 @@ function DiscussionSection({ contextId, contextType = 'campaign' }) {
           });
           break;
         case 'comment_deleted':
-          loadComments();
+          // Remove comment from state without reloading all comments
+          setComments(prevComments => {
+            const removeComment = (comment) => {
+              if (comment.id === data.comment_id) {
+                return null; // Mark for removal
+              }
+              if (comment.replies) {
+                return {
+                  ...comment,
+                  replies: comment.replies.map(removeComment).filter(c => c !== null)
+                };
+              }
+              return comment;
+            };
+            return prevComments.map(removeComment).filter(c => c !== null);
+          });
           break;
         default:
           break;
@@ -96,7 +141,7 @@ function DiscussionSection({ contextId, contextType = 'campaign' }) {
     try {
       await api.createComment(contextId, newComment, null, contextType, userId);
       setNewComment('');
-      loadComments();
+      // Don't reload - SSE will handle the update
     } catch (err) {
       alert(err.message || 'Failed to create comment');
     } finally {
@@ -104,12 +149,13 @@ function DiscussionSection({ contextId, contextType = 'campaign' }) {
     }
   };
 
+  // These callbacks are kept for backward compatibility but SSE handles updates
   const handleCommentCreated = () => {
-    loadComments();
+    // SSE will handle the update, no need to reload
   };
 
   const handleCommentDeleted = () => {
-    loadComments();
+    // SSE will handle the update, no need to reload
   };
 
   // Sort comments

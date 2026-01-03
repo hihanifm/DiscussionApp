@@ -47,6 +47,7 @@ function Comment({ comment, contextId, contextType, onCommentCreated, onCommentD
       await api.createComment(contextId, replyText, comment.id, contextType, userId);
       setReplyText('');
       setIsReplying(false);
+      // SSE will handle the update, callback is optional
       if (onCommentCreated) {
         onCommentCreated();
       }
@@ -66,6 +67,7 @@ function Comment({ comment, contextId, contextType, onCommentCreated, onCommentD
     setIsDeleting(true);
     try {
       await api.deleteComment(comment.id, userId);
+      // SSE will handle the update, callback is optional
       if (onCommentDeleted) {
         onCommentDeleted(comment.id);
       }
