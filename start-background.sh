@@ -90,10 +90,10 @@ fi
 BACKEND_PORT_IN_USE=false
 FRONTEND_PORT_IN_USE=false
 
-if check_port 3001; then
+if check_port 4001; then
     BACKEND_PORT_IN_USE=true
     PORTS_IN_USE=true
-    echo "⚠️  Error: Port 3001 (backend) is already in use!"
+    echo "⚠️  Error: Port 4001 (backend) is already in use!"
 fi
 
 if check_port 4000; then
@@ -139,7 +139,7 @@ else
 fi
 
 # Set PORT and HOST for backend
-export PORT=${PORT:-3001}
+export PORT=${PORT:-4001}
 export HOST=${HOST:-127.0.0.1}
 echo "  Setting PORT=$PORT"
 echo "  Setting HOST=$HOST"
@@ -153,13 +153,13 @@ sleep 3
 if ! ps -p $BACKEND_PID > /dev/null 2>&1; then
     echo "❌ Error: Backend server failed to start! Check $LOG_DIR/backend.log"
     if grep -q "EADDRINUSE" "$LOG_DIR/backend.log" 2>/dev/null; then
-        echo "   Port 3001 is already in use. Please stop the existing server first."
+        echo "   Port 4001 is already in use. Please stop the existing server first."
     fi
     exit 1
 fi
 
-if ! check_port 3001; then
-    echo "❌ Error: Backend server process started but port 3001 is not listening!"
+if ! check_port 4001; then
+    echo "❌ Error: Backend server process started but port 4001 is not listening!"
     echo "   Check $LOG_DIR/backend.log for errors"
     kill $BACKEND_PID 2>/dev/null || true
     exit 1
@@ -186,7 +186,7 @@ else
 fi
 
 # Set VITE_API_URL
-export VITE_API_URL=${VITE_API_URL:-http://localhost:3001}
+export VITE_API_URL=${VITE_API_URL:-http://localhost:4001}
 echo "  Backend URL: $VITE_API_URL"
 
 # Set PORT for frontend
@@ -262,9 +262,9 @@ fi
 echo ""
 echo "Access URLs:"
 echo "  Backend:"
-echo "    - Local:  http://localhost:3001"
+echo "    - Local:  http://localhost:4001"
 if [ -n "$LOCAL_IP" ]; then
-    echo "    - Network: http://$LOCAL_IP:3001"
+    echo "    - Network: http://$LOCAL_IP:4001"
 fi
 echo "  Frontend:"
 echo "    - Local:  http://localhost:4000"

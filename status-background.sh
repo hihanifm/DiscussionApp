@@ -58,9 +58,9 @@ if lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1; then
     fi
 fi
 
-# Detect backend mode by checking process on port 3001
-if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1; then
-    BACKEND_PORT_PID=$(lsof -ti:3001 | head -1)
+# Detect backend mode by checking process on port 4001
+if lsof -Pi :4001 -sTCP:LISTEN -t >/dev/null 2>&1; then
+    BACKEND_PORT_PID=$(lsof -ti:4001 | head -1)
     if [ -n "$BACKEND_PORT_PID" ]; then
         BACKEND_CMD=$(ps -p $BACKEND_PORT_PID -o command= 2>/dev/null | tr -d '\n')
         if echo "$BACKEND_CMD" | grep -q "NODE_ENV=production"; then
@@ -180,11 +180,11 @@ fi
 
 # Check by port
 echo "Port status:"
-if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
-    PORT_PID=$(lsof -ti:3001)
-    echo "  Port 3001 (backend):  ✓ In use (PID: $PORT_PID)"
+if lsof -Pi :4001 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
+    PORT_PID=$(lsof -ti:4001)
+    echo "  Port 4001 (backend):  ✓ In use (PID: $PORT_PID)"
 else
-    echo "  Port 3001 (backend):  ✗ Not in use"
+    echo "  Port 4001 (backend):  ✗ Not in use"
 fi
 
 if lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
@@ -198,13 +198,13 @@ echo ""
 
 # Show access URLs
 LOCAL_IP=$(get_local_ip)
-if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1 || lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1; then
+if lsof -Pi :4001 -sTCP:LISTEN -t >/dev/null 2>&1 || lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1; then
     echo "Access URLs:"
-    if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1; then
+    if lsof -Pi :4001 -sTCP:LISTEN -t >/dev/null 2>&1; then
         echo "  Backend:"
-        echo "    - Local:  http://localhost:3001"
+        echo "    - Local:  http://localhost:4001"
         if [ -n "$LOCAL_IP" ]; then
-            echo "    - Network: http://$LOCAL_IP:3001"
+            echo "    - Network: http://$LOCAL_IP:4001"
         fi
     fi
     if lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1; then

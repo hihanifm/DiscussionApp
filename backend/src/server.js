@@ -6,7 +6,7 @@ const discussionRouter = require('./routes/discussion');
 const sseRouter = require('./routes/sse');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4001;
 
 // Configure allowed origins for CORS
 const getAllowedOrigins = () => {
@@ -69,7 +69,7 @@ app.use(cors({
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else if (process.env.ALLOW_ANY_FRONTEND_PORT !== 'false' && 
-               (origin.includes(':4000') || origin.includes(':3001'))) {
+               (origin.includes(':4000') || origin.includes(':4001'))) {
       callback(null, true);
     } else {
       if (isDevelopment) {

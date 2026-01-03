@@ -47,7 +47,7 @@ cd ../frontend && npm install
 npm run dev
 
 # Or run separately
-npm run dev:backend  # Backend on http://localhost:3001
+npm run dev:backend  # Backend on http://localhost:4001
 npm run dev:frontend # Frontend on http://localhost:4000
 ```
 
@@ -77,7 +77,7 @@ npm start
 
 Environment variables:
 
-- `PORT` - Backend port (default: 3001)
+- `PORT` - Backend port (default: 4001)
 - `HOST` - Backend host (default: 127.0.0.1, use 0.0.0.0 for network access)
 - `DB_PATH` - Database file path (default: `backend/data/discussion.db`)
 - `FRONTEND_URL` - Frontend URL for CORS (e.g., `http://localhost:4000`)
@@ -88,7 +88,7 @@ Environment variables:
 
 Environment variables (via `.env` or `vite.config.js`):
 
-- `VITE_API_URL` - Backend API URL (default: `http://localhost:3001`)
+- `VITE_API_URL` - Backend API URL (default: `http://localhost:4001`)
 - `VITE_USE_PROXY` - Use Vite proxy (default: `true`)
 
 ## Usage
