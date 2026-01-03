@@ -38,9 +38,8 @@
   border-radius: 6px;
   font-family: inherit;
   font-size: 14px;
-  resize: vertical;
   margin-bottom: 12px;
-  min-height: 100px;
+  line-height: 1.5;
 }
 
 .comment-input-form textarea:focus {

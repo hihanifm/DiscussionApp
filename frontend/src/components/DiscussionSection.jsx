@@ -3,6 +3,7 @@ import { api } from '../services/api';
 import { getUserId } from '../utils/userId';
 import { SSE_BASE_URL } from '../config/apiConfig';
 import Comment from './Comment';
+import AutoExpandingTextarea from './AutoExpandingTextarea';
 import './DiscussionSection.css';
 
 function DiscussionSection({ contextId, contextType = 'campaign' }) {
@@ -208,11 +209,10 @@ function DiscussionSection({ contextId, contextType = 'campaign' }) {
 
       {/* Comment Input */}
       <form className="comment-input-form" onSubmit={handleSubmit}>
-        <textarea
+        <AutoExpandingTextarea
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           placeholder="Join the conversation"
-          rows="4"
           disabled={isSubmitting}
         />
         <button type="submit" disabled={isSubmitting || !newComment.trim()}>

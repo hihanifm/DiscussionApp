@@ -56,6 +56,7 @@
   color: #1a1a1a;
   white-space: pre-wrap;
   word-wrap: break-word;
+  font-family: 'Excalifont', sans-serif;
 }
 
 .comment-actions {
@@ -140,8 +141,8 @@
   border-radius: 6px;
   font-family: inherit;
   font-size: 14px;
-  resize: vertical;
   margin-bottom: 8px;
+  line-height: 1.5;
 }
 
 .comment-reply-form textarea:focus {

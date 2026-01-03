@@ -8,6 +8,10 @@ function App() {
   const [contextId] = useState('demo-context-1');
   const [contextType] = useState('campaign');
 
+  // Determine if we're in development or production mode
+  const isDev = import.meta.env.DEV;
+  const mode = isDev ? 'DEV' : 'PROD';
+
   return (
     <div className="app">
       <div className="app-header">
@@ -20,6 +24,12 @@ function App() {
         contextId={contextId} 
         contextType={contextType}
       />
+
+      <div className={`app-footer ${isDev ? 'app-footer-dev' : 'app-footer-prod'}`}>
+        <span className="app-mode">
+          Mode: <strong className={isDev ? 'mode-dev' : 'mode-prod'}>{mode}</strong>
+        </span>
+      </div>
     </div>
   );
 }

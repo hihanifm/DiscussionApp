@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { api } from '../services/api';
 import { getUserId } from '../utils/userId';
 import { formatRelativeTime } from '../utils/dateFormat';
+import AutoExpandingTextarea from './AutoExpandingTextarea';
 import './Comment.css';
 
 function Comment({ comment, contextId, contextType, onCommentCreated, onCommentDeleted, depth = 0 }) {
@@ -136,11 +137,10 @@ function Comment({ comment, contextId, contextType, onCommentCreated, onCommentD
         
         {isReplying && (
           <form className="comment-reply-form" onSubmit={handleReply}>
-            <textarea
+            <AutoExpandingTextarea
               value={replyText}
               onChange={(e) => setReplyText(e.target.value)}
               placeholder="Write a reply..."
-              rows="3"
               disabled={isSubmitting}
             />
             <div className="reply-form-actions">
