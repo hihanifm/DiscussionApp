@@ -1,6 +1,6 @@
 {
   "name": "discussion-app-backend",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Backend API for standalone discussion application",
   "main": "src/server.js",
   "scripts": {

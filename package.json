@@ -1,6 +1,6 @@
 {
   "name": "discussion-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Standalone Reddit-style discussion component - can run independently or be embedded",
   "private": true,
   "scripts": {
