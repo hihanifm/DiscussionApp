@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { api } from '../services/api';
-import { getUserId } from '../utils/userId';
-import { formatRelativeTime } from '../utils/dateFormat';
+import { getUserId } from '@townhall/shared/utils/userId';
+import { formatRelativeTime } from '@townhall/shared/utils/dateFormat';
 import AutoExpandingTextarea from './AutoExpandingTextarea';
 import './Comment.css';
 

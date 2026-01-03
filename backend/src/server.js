@@ -15,6 +15,8 @@ const getAllowedOrigins = () => {
   // Development origins
   origins.push('http://localhost:4000');
   origins.push('http://127.0.0.1:4000');
+  origins.push('http://localhost:3000');
+  origins.push('http://127.0.0.1:3000');
   
   // Production frontend URL from environment
   if (process.env.FRONTEND_URL) {
@@ -69,7 +71,7 @@ app.use(cors({
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else if (process.env.ALLOW_ANY_FRONTEND_PORT !== 'false' && 
-               (origin.includes(':4000') || origin.includes(':4001'))) {
+               (origin.includes(':4000') || origin.includes(':4001') || origin.includes(':3000'))) {
       callback(null, true);
     } else {
       if (isDevelopment) {

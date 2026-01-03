@@ -3,7 +3,7 @@
  */
 
 import { describe, test, expect, beforeEach } from 'vitest';
-import { getUserId } from '../../utils/userId';
+import { getUserId } from '@townhall/shared/utils/userId';
 
 describe('userId utility', () => {
   beforeEach(() => {
@@ -25,12 +25,12 @@ describe('userId utility', () => {
 
   test('should persist user ID in localStorage', () => {
     const userId = getUserId();
-    const stored = localStorage.getItem('discussion_user_id');
+    const stored = localStorage.getItem('townhall_user_id');
     expect(stored).toBe(userId);
   });
 
   test('should retrieve existing user ID from localStorage', () => {
-    localStorage.setItem('discussion_user_id', 'test-user-123');
+    localStorage.setItem('townhall_user_id', 'test-user-123');
     const userId = getUserId();
     expect(userId).toBe('test-user-123');
   });

@@ -1,8 +1,17 @@
 {
-  "name": "discussion-app-frontend",
-  "private": true,
-  "version": "1.2.0",
+  "name": "@townhall/discussion",
+  "version": "1.0.0",
+  "description": "Discussion components library for Townhall applications",
   "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./components/DiscussionSection": "./src/components/DiscussionSection.jsx",
+    "./components/Comment": "./src/components/Comment.jsx",
+    "./components/AutoExpandingTextarea": "./src/components/AutoExpandingTextarea.jsx",
+    "./services/api": "./src/services/api.js",
+    "./config/apiConfig": "./src/config/apiConfig.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,6 +21,7 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@townhall/shared": "file:../../shared-library",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

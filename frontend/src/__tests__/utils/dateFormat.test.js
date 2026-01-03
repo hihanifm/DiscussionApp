@@ -3,7 +3,7 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { formatRelativeTime } from '../../utils/dateFormat';
+import { formatRelativeTime } from '@townhall/shared/utils/dateFormat';
 
 describe('dateFormat utility', () => {
   const now = new Date();

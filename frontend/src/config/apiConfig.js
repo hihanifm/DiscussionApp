@@ -3,8 +3,10 @@
  * Configurable API endpoints for the discussion component
  */
 
-const USE_PROXY = import.meta.env.VITE_USE_PROXY !== 'false';
-const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:4001';
+const USE_PROXY = import.meta.env.VITE_DISCUSSION_USE_PROXY !== undefined 
+  ? import.meta.env.VITE_DISCUSSION_USE_PROXY !== 'false'
+  : import.meta.env.VITE_USE_PROXY !== 'false';
+const BACKEND_URL = import.meta.env.VITE_DISCUSSION_API_URL || import.meta.env.VITE_API_URL || 'http://localhost:4001';
 
 export const API_BASE_URL = USE_PROXY ? '/api' : `${BACKEND_URL}/api`;
 export const SSE_BASE_URL = USE_PROXY ? '/api/sse' : `${BACKEND_URL}/api/sse`;
