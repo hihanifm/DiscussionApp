@@ -29,6 +29,19 @@ cd ../frontend && npm install
 
 ### Development
 
+**Option 1: Using background scripts (recommended)**
+```bash
+# Start servers in background
+./start-background.sh
+
+# Check status
+./status-background.sh
+
+# Stop servers
+./stop-background.sh
+```
+
+**Option 2: Using npm scripts**
 ```bash
 # Run both frontend and backend
 npm run dev
@@ -40,6 +53,16 @@ npm run dev:frontend # Frontend on http://localhost:3000
 
 ### Production
 
+**Using background scripts:**
+```bash
+# Start in production mode
+./start-background.sh --prod
+
+# Or with Vite proxy enabled
+./start-background.sh --prod --vite-proxy
+```
+
+**Using npm scripts:**
 ```bash
 # Build frontend
 npm run build
