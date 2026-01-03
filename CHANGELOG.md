@@ -1,13 +1,8 @@
 ## [1.0.4] - 2026-01-02
 
-### Added
-- 
-
-### Changed
-- 
-
 ### Fixed
-- 
+- SSE: Comment component now syncs vote count state with SSE updates
+- Upvote changes are now reflected in real-time for all users via SSE
 
 ---
 
