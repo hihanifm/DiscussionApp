@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Database
+backend/data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment variables
+.env
+.env.*
+.env.local
+
+# Build outputs
+frontend/dist/
+frontend/build/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+.idea/
+.vscode/
+
+# Test files
+coverage/
+*.lcov

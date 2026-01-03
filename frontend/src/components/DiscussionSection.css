@@ -1,0 +1,167 @@
+.discussion-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.discussion-header {
+  margin-bottom: 24px;
+}
+
+.discussion-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.discussion-subtitle {
+  color: #666;
+  font-size: 14px;
+}
+
+.comment-input-form {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.comment-input-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  margin-bottom: 12px;
+  min-height: 100px;
+}
+
+.comment-input-form textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.comment-input-form button {
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.comment-input-form button:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.comment-input-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.discussion-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-control label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.sort-control select {
+  padding: 6px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.sort-control select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.search-control {
+  flex: 1;
+}
+
+.search-control input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.search-control input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.discussion-loading,
+.discussion-error,
+.discussion-empty {
+  padding: 24px;
+  text-align: center;
+  color: #666;
+}
+
+.discussion-error {
+  color: #ef4444;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .discussion-section {
+    padding: 16px;
+  }
+
+  .discussion-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-control {
+    width: 100%;
+  }
+
+  .comment {
+    margin-left: 0 !important;
+    padding: 10px;
+  }
+
+  .comment-reply {
+    margin-left: 12px !important;
+  }
+}
