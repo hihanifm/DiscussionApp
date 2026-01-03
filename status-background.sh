@@ -38,9 +38,9 @@ FRONTEND_MODE="UNKNOWN"
 BACKEND_MODE="UNKNOWN"
 VITE_PROXY_STATUS="UNKNOWN"
 
-# Detect frontend mode by checking process on port 3000
-if lsof -Pi :3000 -sTCP:LISTEN -t >/dev/null 2>&1; then
-    FRONTEND_PORT_PID=$(lsof -ti:3000 | head -1)
+# Detect frontend mode by checking process on port 4000
+if lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1; then
+    FRONTEND_PORT_PID=$(lsof -ti:4000 | head -1)
     if [ -n "$FRONTEND_PORT_PID" ]; then
         FRONTEND_CMD=$(ps -p $FRONTEND_PORT_PID -o command= 2>/dev/null | tr -d '\n')
         if echo "$FRONTEND_CMD" | grep -q "vite preview"; then
@@ -187,18 +187,18 @@ else
     echo "  Port 3001 (backend):  ✗ Not in use"
 fi
 
-if lsof -Pi :3000 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
-    PORT_PID=$(lsof -ti:3000)
-    echo "  Port 3000 (frontend): ✓ In use (PID: $PORT_PID)"
+if lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
+    PORT_PID=$(lsof -ti:4000)
+    echo "  Port 4000 (frontend): ✓ In use (PID: $PORT_PID)"
 else
-    echo "  Port 3000 (frontend): ✗ Not in use"
+    echo "  Port 4000 (frontend): ✗ Not in use"
 fi
 
 echo ""
 
 # Show access URLs
 LOCAL_IP=$(get_local_ip)
-if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1 || lsof -Pi :3000 -sTCP:LISTEN -t >/dev/null 2>&1; then
+if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1 || lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1; then
     echo "Access URLs:"
     if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1; then
         echo "  Backend:"
@@ -207,11 +207,11 @@ if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1 || lsof -Pi :3000 -sTCP:LISTEN
             echo "    - Network: http://$LOCAL_IP:3001"
         fi
     fi
-    if lsof -Pi :3000 -sTCP:LISTEN -t >/dev/null 2>&1; then
+    if lsof -Pi :4000 -sTCP:LISTEN -t >/dev/null 2>&1; then
         echo "  Frontend:"
-        echo "    - Local:  http://localhost:3000"
+        echo "    - Local:  http://localhost:4000"
         if [ -n "$LOCAL_IP" ]; then
-            echo "    - Network: http://$LOCAL_IP:3000"
+            echo "    - Network: http://$LOCAL_IP:4000"
         fi
     fi
     echo ""

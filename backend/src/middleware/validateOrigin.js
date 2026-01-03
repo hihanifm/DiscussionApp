@@ -7,8 +7,8 @@ const getAllowedOrigins = () => {
   const allowedOrigins = [];
   
   // Add localhost origins (development)
-  allowedOrigins.push('http://localhost:3000');
-  allowedOrigins.push('http://127.0.0.1:3000');
+  allowedOrigins.push('http://localhost:4000');
+  allowedOrigins.push('http://127.0.0.1:4000');
   
   // Add environment variable for custom frontend URL (production)
   if (process.env.FRONTEND_URL) {
@@ -34,7 +34,7 @@ const isFrontendPort = (urlString) => {
   try {
     const url = new URL(urlString);
     const port = url.port || (url.protocol === 'https:' ? '443' : '80');
-    return port === '3000';
+    return port === '4000';
   } catch (e) {
     return false;
   }

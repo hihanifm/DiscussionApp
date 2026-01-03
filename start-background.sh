@@ -96,10 +96,10 @@ if check_port 3001; then
     echo "⚠️  Error: Port 3001 (backend) is already in use!"
 fi
 
-if check_port 3000; then
+if check_port 4000; then
     FRONTEND_PORT_IN_USE=true
     PORTS_IN_USE=true
-    echo "⚠️  Error: Port 3000 (frontend) is already in use!"
+    echo "⚠️  Error: Port 4000 (frontend) is already in use!"
 fi
 
 # If ports are in use, exit unless user explicitly overrides
@@ -190,7 +190,7 @@ export VITE_API_URL=${VITE_API_URL:-http://localhost:3001}
 echo "  Backend URL: $VITE_API_URL"
 
 # Set PORT for frontend
-export PORT=${PORT:-3000}
+export PORT=${PORT:-4000}
 echo "  Setting PORT=$PORT"
 
 if [ "$PROD_MODE" = true ]; then
@@ -221,13 +221,13 @@ if ! ps -p $FRONTEND_PID > /dev/null 2>&1; then
     echo "❌ Error: Frontend server failed to start! Check $LOG_DIR/frontend.log"
     kill $BACKEND_PID 2>/dev/null || true
     if grep -q "EADDRINUSE" "$LOG_DIR/frontend.log" 2>/dev/null; then
-        echo "   Port 3000 is already in use. Please stop the existing server first."
+        echo "   Port 4000 is already in use. Please stop the existing server first."
     fi
     exit 1
 fi
 
-if ! check_port 3000; then
-    echo "❌ Error: Frontend server process started but port 3000 is not listening!"
+if ! check_port 4000; then
+    echo "❌ Error: Frontend server process started but port 4000 is not listening!"
     echo "   Check $LOG_DIR/frontend.log for errors"
     kill $BACKEND_PID 2>/dev/null || true
     kill $FRONTEND_PID 2>/dev/null || true
@@ -267,9 +267,9 @@ if [ -n "$LOCAL_IP" ]; then
     echo "    - Network: http://$LOCAL_IP:3001"
 fi
 echo "  Frontend:"
-echo "    - Local:  http://localhost:3000"
+echo "    - Local:  http://localhost:4000"
 if [ -n "$LOCAL_IP" ]; then
-    echo "    - Network: http://$LOCAL_IP:3000"
+    echo "    - Network: http://$LOCAL_IP:4000"
 fi
 echo ""
 echo "Logs are available in: $LOG_DIR/"

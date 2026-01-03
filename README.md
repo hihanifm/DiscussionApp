@@ -48,7 +48,7 @@ npm run dev
 
 # Or run separately
 npm run dev:backend  # Backend on http://localhost:3001
-npm run dev:frontend # Frontend on http://localhost:3000
+npm run dev:frontend # Frontend on http://localhost:4000
 ```
 
 ### Production
@@ -80,7 +80,7 @@ Environment variables:
 - `PORT` - Backend port (default: 3001)
 - `HOST` - Backend host (default: 127.0.0.1, use 0.0.0.0 for network access)
 - `DB_PATH` - Database file path (default: `backend/data/discussion.db`)
-- `FRONTEND_URL` - Frontend URL for CORS (e.g., `http://localhost:3000`)
+- `FRONTEND_URL` - Frontend URL for CORS (e.g., `http://localhost:4000`)
 - `FRONTEND_URLS` - Multiple frontend URLs (comma-separated)
 - `NODE_ENV` - Set to `production` for strict origin validation
 
