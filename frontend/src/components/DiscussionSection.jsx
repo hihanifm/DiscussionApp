@@ -11,10 +11,19 @@ function DiscussionSection({ contextId, contextType = 'campaign' }) {
   const [error, setError] = useState(null);
   const [newComment, setNewComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [sortBy, setSortBy] = useState('best');
+  // Load sort preference from localStorage, default to 'newest'
+  const [sortBy, setSortBy] = useState(() => {
+    const saved = localStorage.getItem('discussion-sort-preference');
+    return saved || 'newest';
+  });
   const [searchQuery, setSearchQuery] = useState('');
 
   const userId = getUserId();
+
+  // Save sort preference to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem('discussion-sort-preference', sortBy);
+  }, [sortBy]);
 
   useEffect(() => {
     if (contextId) {
@@ -161,13 +170,13 @@ function DiscussionSection({ contextId, contextType = 'campaign' }) {
   // Sort comments
   const sortedComments = [...comments].sort((a, b) => {
     switch (sortBy) {
-      case 'newest':
-        return new Date(b.created_at) - new Date(a.created_at);
+      case 'best':
+        return (b.vote_count || 0) - (a.vote_count || 0);
       case 'oldest':
         return new Date(a.created_at) - new Date(b.created_at);
-      case 'best':
+      case 'newest':
       default:
-        return (b.vote_count || 0) - (a.vote_count || 0);
+        return new Date(b.created_at) - new Date(a.created_at);
     }
   });
 
@@ -216,9 +225,9 @@ function DiscussionSection({ contextId, contextType = 'campaign' }) {
         <div className="sort-control">
           <label>Sort by:</label>
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="best">Best</option>
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
+            <option value="best">Best</option>
           </select>
         </div>
         <div className="search-control">
