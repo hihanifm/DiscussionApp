@@ -33,3 +33,4 @@ server.pids
 # Test files
 coverage/
 *.lcov
+backend/data/test-*.db

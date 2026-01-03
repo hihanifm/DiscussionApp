@@ -24,16 +24,25 @@ function initDatabase() {
       console.log(`Connected to SQLite database: ${DB_PATH}`);
     });
 
-    // Read and execute schema
-    const schema = fs.readFileSync(SCHEMA_PATH, 'utf8');
-    db.exec(schema, (err) => {
-      if (err) {
-        console.error('Error executing schema:', err);
-        reject(err);
+    // Enable foreign keys for CASCADE deletes
+    db.run('PRAGMA foreign_keys = ON', (pragmaErr) => {
+      if (pragmaErr) {
+        console.error('Error enabling foreign keys:', pragmaErr);
+        reject(pragmaErr);
         return;
       }
-      console.log('Database schema initialized');
-      resolve(db);
+
+      // Read and execute schema
+      const schema = fs.readFileSync(SCHEMA_PATH, 'utf8');
+      db.exec(schema, (err) => {
+        if (err) {
+          console.error('Error executing schema:', err);
+          reject(err);
+          return;
+        }
+        console.log('Database schema initialized');
+        resolve(db);
+      });
     });
   });
 }
