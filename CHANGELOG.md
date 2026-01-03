@@ -1,10 +1,16 @@
 ## [1.1.0] - 2026-01-02
 
 ### Added
-- 
+- Comprehensive test suite with 39 tests (15 backend, 24 frontend)
+- Backend tests using Jest and Supertest for discussion API routes
+- Frontend tests using Vitest and Testing Library for utilities, API service, and config
+- Test database setup with foreign key support for CASCADE deletes
+- Test coverage reporting for both backend and frontend
+- Foreign key support enabled in production database for proper CASCADE deletes
 
 ### Changed
-- 
+- Updated test scripts in package.json files to use Jest (backend) and Vitest (frontend)
+- Enhanced database initialization to enable foreign keys for data integrity
 
 ### Fixed
 - 
