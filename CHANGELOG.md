@@ -1,13 +1,7 @@
 ## [1.0.1] - 2026-01-02
 
-### Added
-- 
-
 ### Changed
-- 
-
-### Fixed
-- 
+- Frontend port changed from 3000 to 4000 to avoid conflict with Townhall project
 
 ---
 
