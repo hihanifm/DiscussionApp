@@ -2,6 +2,7 @@
 
 ### Changed
 - Updated shared library path reference to TownhallQAPoll_SharedLibrary
+- Updated DiscussionSection styling to align with parent window (removed card styling to allow parent wrapper to apply styling)
 
 ---
 
