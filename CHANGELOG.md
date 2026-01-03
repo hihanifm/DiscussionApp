@@ -1,10 +1,13 @@
 ## [1.2.0] - 2026-01-02
 
 ### Added
-- 
+- Auto-expanding textarea component that starts as a single line and expands as user types
+- Excalidraw font (Excalifont) for comment text, matching Townhall project style
+- Bottom bar footer displaying current mode (DEV/PROD) with color-coded indicators
 
 ### Changed
-- 
+- Comment input and reply textareas now use auto-expanding behavior instead of fixed height
+- Comment text now uses Excalifont for improved readability and consistency
 
 ### Fixed
 - 
