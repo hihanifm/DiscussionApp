@@ -1,13 +1,7 @@
 ## [1.0.2] - 2026-01-02
 
-### Added
-- 
-
 ### Changed
-- 
-
-### Fixed
-- 
+- Backend port changed from 3001 to 4001 to avoid conflict with Townhall project
 
 ---
 
