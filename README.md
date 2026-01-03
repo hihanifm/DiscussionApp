@@ -2,6 +2,8 @@
 
 A standalone, modular Reddit-style discussion component that can run independently or be embedded into any project.
 
+**Status:** Independent project - can be hosted on separate frontend and backend servers.
+
 ## Features
 
 - ✅ **Threaded Comments** - Nested replies with unlimited depth
