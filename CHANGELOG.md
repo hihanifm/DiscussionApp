@@ -1,3 +1,10 @@
+## [2.0.1] - 2026-01-03
+
+### Changed
+- Updated shared library path reference to TownhallQAPoll_SharedLibrary
+
+---
+
 ## [2.0.0] - 2026-01-03
 
 ### Added
