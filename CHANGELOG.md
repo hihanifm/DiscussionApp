@@ -1,13 +1,9 @@
 ## [1.0.3] - 2026-01-02
 
-### Added
-- 
-
 ### Changed
-- 
-
-### Fixed
-- 
+- Default sort option changed from "Best" to "Newest"
+- Sort preference now persists in localStorage across page refreshes
+- Optimized SSE: Update state directly instead of reloading all comments
 
 ---
 
