@@ -1,10 +1,17 @@
 ## [2.0.0] - 2026-01-03
 
 ### Added
-- 
+- Library packaging as @townhall/discussion npm package
+- Library entry point (src/index.js) with exports for components and services
+- Support for separate DiscussionApp backend URL configuration (VITE_DISCUSSION_API_URL)
+- Support for separate proxy configuration (VITE_DISCUSSION_USE_PROXY)
 
 ### Changed
-- 
+- Refactored to use @townhall/shared library for common utilities (userId, dateFormat)
+- Updated package.json to configure as npm library package with proper exports
+- Updated backend CORS to allow TownhallQAPoll frontend (port 3000)
+- Updated all imports to use shared library utilities instead of local copies
+- Updated apiConfig to support separate environment variables for DiscussionApp backend
 
 ### Fixed
 - 
