@@ -1,5 +1,18 @@
 ## [2.0.1] - 2026-01-03
 
+### Added
+- 
+
+### Changed
+- 
+
+### Fixed
+- 
+
+---
+
+## [2.0.1] - 2026-01-03
+
 ### Changed
 - Updated shared library path reference to TownhallQAPoll_SharedLibrary
 - Updated DiscussionSection styling to align with parent window (removed card styling to allow parent wrapper to apply styling)
