@@ -20,8 +20,10 @@ dist/
 build/
 
 # Logs
+logs/
 *.log
 npm-debug.log*
+server.pids
 
 # OS files
 .DS_Store
